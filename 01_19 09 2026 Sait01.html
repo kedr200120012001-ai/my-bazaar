@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Моя барахолка</title>
+<!-- Простые стили для красоты -->
+<style>
+  body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
+  h1 { text-align: center; color: #333; }
+  .catalog { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .product { background: #fff; border-radius: 8px; padding: 10px; width: 180px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .product img { width: 100%; border-radius: 4px; }
+  .product h3 { margin: 10px 0 5px; font-size: 1.1em; }
+  .price { color: green; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Добро пожаловать в барахолку!</h1>
+
+<h2>Каталог товаров</h2>
+<div class="catalog" id="catalog">
+  <!-- Товары появятся здесь -->
+</div>
+
+<script>
+  // Массив товаров
+  const products = [
+    { name: "Ручка", price: "50₽", image: "https://via.placeholder.com/180x180?text=Ручка" },
+    { name: "Книга", price: "300₽", image: "https://via.placeholder.com/180x180?text=Книга" },
+    { name: "Кофта", price: "1500₽", image: "https://via.placeholder.com/180x180?text=Кофта" }
+  ];
+
+  const catalogDiv = document.getElementById('catalog');
+
+  // Функция для отображения товаров
+  function renderCatalog() {
+    catalogDiv.innerHTML = '';
+    products.forEach(product => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="price">${product.price}</div>
+      `;
+      catalogDiv.appendChild(div);
+    });
+  }
+
+  renderCatalog();
+</script>
+
+</body>
+</html>
